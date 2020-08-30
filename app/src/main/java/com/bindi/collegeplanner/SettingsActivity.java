@@ -111,6 +111,16 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             });
 
+            Preference openSourcePreference = findPreference("key_os_libraries");
+            openSourcePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent intent = new Intent(getActivity(), LibraryActivity.class);
+                    startActivity(intent);
+                    return true;
+                }
+            });
+
         }
     }
 
