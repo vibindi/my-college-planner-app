@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addContentClasses.AddCollegeActivity">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_school_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeName"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:hint="College Name"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeMajorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:layout_below="@+id/collegeNameLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_school_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeMajor"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:hint="College Major"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeColorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:layout_below="@+id/collegeMajorLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_fiber_manual_record_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeColor"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:hint="Pick A Color"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeStatusLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:layout_below="@+id/collegeColorLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_notifications_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeStatus"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:hint="Status"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:layout_below="@+id/collegeStatusLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_label_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeType"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:hint="College Type"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/applicationTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:focusable="false"
+                android:layout_below="@+id/collegeTypeLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_access_time_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/applicationType"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:lines="1"
+                    android:hint="Application Type"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeAppFeeLayout"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:layout_below="@+id/applicationTypeLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_attach_money_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeAppFee"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:hint="Application Fee"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeTuitionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:layout_below="@+id/collegeAppFeeLayout"
+                android:padding="10dp"
+                app:startIconDrawable="@drawable/ic_attach_money_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeTuition"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:hint="Tuition"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/collegeNotesLayout"
+                android:layout_below="@+id/collegeTuitionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@android:color/white"
+                android:focusable="false"
+                app:startIconDrawable="@drawable/ic_edit_black_24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/collegeNotes"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Notes"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--<ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/testImage"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/collegeTuitionLayout"/>-->
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/addCollege"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"
+            android:src="@drawable/ic_check_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

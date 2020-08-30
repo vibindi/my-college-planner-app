@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OverviewFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Schools You've Applied To"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26dp"
+                android:id="@+id/appliedSchoolsTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/appliedSchoolsCardView"
+                android:layout_below="@+id/appliedSchoolsTitle"
+                android:background="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/appliedSchoolsTitle"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="7dp"
+                        android:singleLine="false"
+                        android:layout_centerInParent="true"
+                        android:textSize="14sp"
+                        android:id="@+id/noAppliedText"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/appliedSchoolsRecycler"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/appliedSchoolsCardView"
+                android:text="Accepted Schools"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26dp"
+                android:id="@+id/acceptedSchoolsTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/acceptedSchoolsCardView"
+                android:layout_below="@+id/acceptedSchoolsTitle"
+                android:background="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/acceptedSchoolsTitle"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="7dp"
+                        android:singleLine="false"
+                        android:layout_centerInParent="true"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:id="@+id/noAcceptedText"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/acceptedSchoolsRecycler"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/acceptedSchoolsCardView"
+                android:text="Deferred Schools"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26dp"
+                android:id="@+id/deferredSchoolsTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/deferredSchoolsCard"
+                android:layout_below="@+id/deferredSchoolsTitle"
+                android:background="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/acceptedSchoolsTitle"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="7dp"
+                        android:singleLine="false"
+                        android:layout_centerInParent="true"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:id="@+id/noDeferredText"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/deferredSchoolsRecycler"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deferredSchoolsCard"
+                android:text="Waitlisted Schools"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26dp"
+                android:id="@+id/waitlistedSchoolsTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/waitlistedSchoolsCardView"
+                android:layout_below="@+id/waitlistedSchoolsTitle"
+                android:background="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/waitlistedSchoolsTitle"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="7dp"
+                        android:singleLine="false"
+                        android:layout_centerInParent="true"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:id="@+id/noWaitlistedText"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/waitlistedSchoolsRecycler"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/waitlistedSchoolsCardView"
+                android:text="Schools You're Considering or Applying To"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26dp"
+                android:id="@+id/consideringSchoolsTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:id="@+id/consideringSchoolsCardView"
+                android:layout_below="@+id/consideringSchoolsTitle"
+                android:background="@android:color/white"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:outlineSpotShadowColor="@android:color/black"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/consideringSchoolsTitle"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="27dp"
+                        android:singleLine="false"
+                        android:layout_centerInParent="true"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:id="@+id/noConsideringText"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/consideringSchoolsRecycler"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

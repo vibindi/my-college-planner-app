@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="Profile">
+        <Preference
+            app:title="Edit Profile"
+            app:key="key_profile"/>
+    </PreferenceCategory>
+    <PreferenceCategory app:title="About">
+        <Preference
+            app:title="Leave a Review"
+            app:summary="Submit a review on the Google Play Store"
+            app:key="key_review"/>
+        <Preference
+            app:title="Contact Us"
+            app:summary="Let us know about any bugs or features you would like to fix or see"
+            app:key="key_send_feedback"/>
+        <Preference
+            app:title="Privacy Policy"
+            app:key="key_privacy_policy"/>
+        <Preference
+            app:title="Donate"
+            app:summary="Donate any of the following amounts to help us provide you with updates"
+            app:key="key_donate"/>
+        <Preference
+            app:title="Open Source Libraries"
+            app:key="key_os_libraries"/>
+        <Preference
+            app:title="About"
+            app:key="key_about"/>
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Delete">
+        <Preference
+            app:title="Delete All Data"
+            app:key="key_delete_data"/>
+    </PreferenceCategory>
+</PreferenceScreen>

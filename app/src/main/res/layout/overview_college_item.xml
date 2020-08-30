@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bgCard"
+    app:cardCornerRadius="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:id="@+id/mCollegeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note Title"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/mCollegeInfo"
+                android:layout_below="@+id/mCollegeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note Title"
+                android:maxLines="2"
+                android:textColor="@android:color/white"
+                android:textStyle="italic"
+                android:textSize="10sp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

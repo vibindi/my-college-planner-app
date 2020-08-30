@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_main"
+        android:checkableBehavior="single">
+        <item
+            android:checkable="true"
+            android:id="@+id/overview"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Overview" />
+        <item
+            android:checkable="true"
+            android:id="@+id/calendar"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_date_range_black_24dp"
+            android:title="Calendar" />
+        <item
+            android:checkable="true"
+            android:id="@+id/colleges"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_school_black_24dp"
+            android:title="Colleges" />
+    </group>
+    <group
+        android:id="@+id/group_college"
+        android:checkableBehavior="single">
+        <item
+            android:checkable="true"
+            android:id="@+id/financialAid"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_attach_money_black_24dp"
+            android:title="Scholarships" />
+        <item
+            android:checkable="true"
+            android:id="@+id/notes"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="Notes" />
+        <item
+            android:checkable="true"
+            android:id="@+id/portals"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_web_black_24dp"
+            android:title="Portals" />
+        <item
+            android:checkable="true"
+            android:id="@+id/resources"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_bookmark_black_24dp"
+            android:title="Resources" />
+        <item
+            android:checkable="true"
+            android:id="@+id/statistics"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_baseline_bar_chart_24"
+            android:title="Statistics" />
+    </group>
+    <group
+        android:id="@+id/group_settings"
+        android:checkableBehavior="single">
+        <item
+            android:checkable="false"
+            android:id="@+id/help"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_help_black_24dp"
+            android:title="Help and Feedback" />
+        <item
+            android:checkable="false"
+            android:id="@+id/settings"
+            android:iconTint="@color/colorPrimary"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings" />
+    </group>
+</menu>

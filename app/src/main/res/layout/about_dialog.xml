@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text=""
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="25dp"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="College Planner 1.0.0"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="A mobile college planner application to aid you through the college admissions process."
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="Developed by Vishnu Bindiganavile"
+        android:textStyle="bold"
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="Report all bugs and request new features:"
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="help.mycollegeplanner@gmail.com"
+        android:textSize="15dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"/>
+
+</LinearLayout>

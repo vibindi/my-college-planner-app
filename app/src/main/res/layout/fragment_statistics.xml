@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatisticsFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dream School"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22dp"
+                android:id="@+id/dreamSchoolTitle"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dreamSchoolCard"
+                android:layout_below="@id/dreamSchoolTitle"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:outlineSpotShadowColor="@android:color/black">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:id="@+id/dreamSchoolName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Dream School:"
+                            android:textColor="@android:color/white"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/dreamSchoolStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dreamSchoolName"
+                            android:layout_centerHorizontal="true"
+                            android:textSize="12sp"
+                            android:textStyle="italic"
+                            android:textColor="@android:color/white"
+                            android:text="Dream School → " />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Application Fees"
+                android:layout_below="@id/dreamSchoolCard"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22dp"
+                android:id="@+id/totalAppFeesTitle"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_below="@+id/totalAppFeesTitle"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:id="@+id/totalAppFees"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of Fee Waivers Collected"
+                android:layout_below="@id/totalAppFees"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22dp"
+                android:id="@+id/numOfFeeWaiversTitle"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_below="@+id/numOfFeeWaiversTitle"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:id="@+id/numOfFeeWaivers"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="School With Lowest Tuition"
+                android:layout_below="@id/numOfFeeWaivers"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:textSize="22dp"
+                android:id="@+id/cheapestSchoolTitle"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_below="@+id/cheapestSchoolTitle"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="16dp"
+                android:id="@+id/cheapestSchool"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

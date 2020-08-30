@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".addContentClasses.AddCounselorActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            app:startIconDrawable="@drawable/ic_person_black_24dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:lines="1"
+                android:hint="Name"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phonelayout"
+            android:layout_below="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@android:color/white"
+            android:focusable="false"
+            app:startIconDrawable="@drawable/ic_baseline_phone_24">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone"
+                android:background="@null"
+                android:inputType="phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phonelayout"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            app:startIconDrawable="@drawable/ic_baseline_mail_24">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:lines="1"
+                android:hint="Email"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/noteTextLayout"
+            android:layout_below="@+id/emailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@android:color/white"
+            android:focusable="false"
+            app:startIconDrawable="@drawable/ic_edit_black_24dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/noteText"
+                android:background="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Notes"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/addContact"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryDark"
+            android:src="@drawable/ic_check_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

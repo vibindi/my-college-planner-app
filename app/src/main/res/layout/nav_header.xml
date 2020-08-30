@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?attr/colorPrimary"
+    android:padding="16dp"
+    android:theme="@style/AppTheme"
+    android:orientation="vertical"
+    android:gravity="bottom">
+    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark"-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageLayout">
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/imageLayout"
+            android:layout_height="wrap_content"
+            android:id="@+id/studentRelLayout"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Name"
+                android:layout_marginLeft="10dp"
+                android:textSize="14sp"
+                android:id="@+id/studentName"
+                android:textColor="@android:color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Applying"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:id="@+id/studentStatus"
+                android:layout_below="@+id/studentName"
+                android:textColor="@android:color/primary_text_dark_nodisable"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>
