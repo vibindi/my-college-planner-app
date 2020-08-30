@@ -22,6 +22,7 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bindi.collegeplanner.MainActivity;
@@ -56,6 +57,8 @@ import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.SearchResultListener;
 import ir.mirrajabi.searchdialog.core.Searchable;
+
+import static com.bindi.collegeplanner.SettingsActivity.inflater;
 
 public class AddCollegeActivity extends AppCompatActivity implements ColorPickerDialogListener{
 
@@ -282,9 +285,14 @@ public class AddCollegeActivity extends AppCompatActivity implements ColorPicker
                         globals.sortCollegeList();
                         globals.saveColleges(globals.collegeItems, GlobalKeys.collegeKey, c);
                         globals.loadColleges(GlobalKeys.collegeKey, c);
-                        Intent i = new Intent(a, MainActivity.class);
-                        i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
-                        startActivity(i);
+
+                        if (collegeStatus.getText().toString().equals("Accepted")){
+                            admittedCollegeDialog();
+                        }else{
+                            Intent i = new Intent(a, MainActivity.class);
+                            i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
+                            startActivity(i);
+                        }
                     }
                     else if (!enrolledOnce){
                         Toast.makeText(c, "Cannot Enroll To Multiple Colleges", Toast.LENGTH_SHORT).show();
@@ -298,6 +306,27 @@ public class AddCollegeActivity extends AppCompatActivity implements ColorPicker
                 }
             }
         });
+    }
+
+    public void admittedCollegeDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+        final View view = getLayoutInflater().inflate(R.layout.admitted_congrats, null);
+        final TextView cn = view.findViewById(R.id.collegeNameText);
+        cn.setText(collegeName.getText().toString() + "!");
+        cn.setTextColor(Color.parseColor(collegeColor.getText().toString()));
+        alertDialogBuilder
+                //.setTitle("Congrats On Getting Into")
+                .setView(view)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(a, MainActivity.class);
+                        i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
+                        startActivity(i);
+                    }
+                });
+        Dialog dialog = alertDialogBuilder.create();
+        dialog.show();
     }
 
     private ArrayList<Searchable> initCollegeData(){

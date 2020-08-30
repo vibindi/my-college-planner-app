@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Congrats on your admission into"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/collegeTitle"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Congrats on getting into"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_below="@id/collegeTitle"
+            android:textSize="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/collegeNameText"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

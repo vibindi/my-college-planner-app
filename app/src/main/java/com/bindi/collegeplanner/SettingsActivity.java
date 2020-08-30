@@ -169,7 +169,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         String email = "help.mycollegeplanner@gmail.com";
-        String subject = "Feedback for Taskmaster";
+        String subject = "Feedback for MyCollegePlanner";
         String chooserTitle = "Send Feedback Email";
 
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
