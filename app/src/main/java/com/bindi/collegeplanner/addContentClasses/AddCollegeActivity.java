@@ -47,6 +47,8 @@ import com.jaredrummler.android.colorpicker.ColorPickerDialog;
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
 import com.jaredrummler.android.colorpicker.ColorPickerView;
 
+import org.w3c.dom.Text;
+
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -288,7 +290,11 @@ public class AddCollegeActivity extends AppCompatActivity implements ColorPicker
 
                         if (collegeStatus.getText().toString().equals("Accepted")){
                             admittedCollegeDialog();
-                        }else{
+                        }
+                        else if (collegeStatus.getText().toString().equals("Enrolled")){
+                            enrolledCollegeDialog();
+                        }
+                        else{
                             Intent i = new Intent(a, MainActivity.class);
                             i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
                             startActivity(i);
@@ -306,6 +312,29 @@ public class AddCollegeActivity extends AppCompatActivity implements ColorPicker
                 }
             }
         });
+    }
+
+    public void enrolledCollegeDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+        final View view = getLayoutInflater().inflate(R.layout.admitted_congrats, null);
+        final TextView ct = view.findViewById(R.id.collegeTitle);
+        ct.setText("Congrats on enrolling at");
+        final TextView cn = view.findViewById(R.id.collegeNameText);
+        cn.setText(collegeName.getText().toString() + "!");
+        cn.setTextColor(Color.parseColor(collegeColor.getText().toString()));
+        alertDialogBuilder
+                //.setTitle("Congrats On Getting Into")
+                .setView(view)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(a, MainActivity.class);
+                        i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
+                        startActivity(i);
+                    }
+                });
+        Dialog dialog = alertDialogBuilder.create();
+        dialog.show();
     }
 
     public void admittedCollegeDialog(){

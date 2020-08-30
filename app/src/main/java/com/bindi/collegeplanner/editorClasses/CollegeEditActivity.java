@@ -224,7 +224,11 @@ public class CollegeEditActivity extends AppCompatActivity implements ColorPicke
 
                         if (collegeStatus.getText().toString().equals("Accepted")){
                             admittedCollegeDialog();
-                        }else{
+                        }
+                        else if (collegeStatus.getText().toString().equals("Enrolled")){
+                            enrolledCollegeDialog();
+                        }
+                        else{
                             Intent i = new Intent(a, MainActivity.class);
                             i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
                             startActivity(i);
@@ -238,6 +242,29 @@ public class CollegeEditActivity extends AppCompatActivity implements ColorPicke
                 }
             }
         });
+    }
+
+    public void enrolledCollegeDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+        final View view = getLayoutInflater().inflate(R.layout.admitted_congrats, null);
+        final TextView ct = view.findViewById(R.id.collegeTitle);
+        ct.setText("Congrats on enrolling at");
+        final TextView cn = view.findViewById(R.id.collegeNameText);
+        cn.setText(collegeName.getText().toString() + "!");
+        cn.setTextColor(Color.parseColor(collegeColor.getText().toString()));
+        alertDialogBuilder
+                //.setTitle("Congrats On Getting Into")
+                .setView(view)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent i = new Intent(a, MainActivity.class);
+                        i.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
+                        startActivity(i);
+                    }
+                });
+        Dialog dialog = alertDialogBuilder.create();
+        dialog.show();
     }
 
     public void admittedCollegeDialog(){
