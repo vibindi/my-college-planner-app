@@ -76,7 +76,33 @@ public class OverviewCollegesAdapter extends RecyclerView.Adapter<OverviewColleg
         CollegeItem currentItem = mCollegeItems.get(position);
         holder.mResourceCard.setBackgroundColor(Color.parseColor(currentItem.getColorStr()));
         holder.mCollegeName.setText(currentItem.getCollegeName());
-        holder.mCollegeInfo.setText(currentItem.getCollegeMajor() + " | "  + currentItem.getCollegeType() + " | " + currentItem.getAppType() + " ");
+        String type = "";
+        if (currentItem.getCollegeType().equals("Safety")){
+            type = "S";
+        } else if (currentItem.getCollegeType().equals("Target")){
+            type = "T";
+        } else if (currentItem.getCollegeType().equals("Hard Target")){
+            type = "HT";
+        } else if (currentItem.getCollegeType().equals("Reach")){
+            type = "R";
+        } else if (currentItem.getCollegeType().equals("Long Reach")){
+            type = "LR";
+        }
+
+        String app = "";
+        if (currentItem.getAppType().equals("Early Decision")){
+            app = "ED";
+        } else if (currentItem.getAppType().equals("Early Action")){
+            app = "EA";
+        } else if (currentItem.getAppType().equals("Restricted Early Action")){
+            app = "REA";
+        } else if (currentItem.getAppType().equals("Rolling Admission")){
+            app = "RO";
+        } else if (currentItem.getAppType().equals("Regular Admission")){
+            app = "RA";
+        }
+
+        holder.mCollegeInfo.setText(currentItem.getCollegeMajor() + " | "  + type + " | " + app + " ");
     }
 
     @Override
