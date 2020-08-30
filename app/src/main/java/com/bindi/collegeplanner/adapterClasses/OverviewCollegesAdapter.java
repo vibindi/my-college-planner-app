@@ -74,8 +74,9 @@ public class OverviewCollegesAdapter extends RecyclerView.Adapter<OverviewColleg
     @Override
     public void onBindViewHolder(@NonNull OverviewCollegesAdapter.CollegesViewHolder holder, int position) {
         CollegeItem currentItem = mCollegeItems.get(position);
-        holder.mResourceCard.setBackgroundColor(Color.parseColor(currentItem.getColorStr()));
+        holder.mResourceCard.setCardBackgroundColor(Color.parseColor(currentItem.getColorStr()));
         holder.mCollegeName.setText(currentItem.getCollegeName());
+
         String type = "";
         if (currentItem.getCollegeType().equals("Safety")){
             type = "S";

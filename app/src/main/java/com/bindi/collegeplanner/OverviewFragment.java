@@ -36,6 +36,10 @@ public class OverviewFragment extends Fragment {
 
     Globals globals = Globals.getInstance();
 
+    TextView enrolledSchool;
+    TextView enrolledTitle;
+    RelativeLayout enrolledView;
+
     private RecyclerView mAppliedSchoolsRecycler;
     private OverviewCollegesAdapter mAppliedAdapter;
     private RecyclerView.LayoutManager mAppliedLayoutManager;
@@ -84,6 +88,40 @@ public class OverviewFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_overview, container, false);
         getActivity().setTitle("Overview");
+
+        enrolledSchool = v.findViewById(R.id.enrolledSchool);
+        enrolledTitle = v.findViewById(R.id.enrolledTitle);
+        enrolledView = v.findViewById(R.id.enrolledView);
+        CollegeItem college  = null;
+        boolean isEnrolled = false;
+        int cp = -1;
+        for (int x = 0; x < globals.collegeItems.size(); x++){
+            if (globals.collegeItems.get(x).getStatus().equals("Enrolled")){
+                isEnrolled = true;
+                college = globals.collegeItems.get(x);
+                cp = x;
+            }
+        }
+
+        final boolean enrollCheck = isEnrolled;
+        final int pc = cp;
+        enrolledSchool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (enrollCheck){
+                    Intent intent = new Intent(getActivity(), CollegeActivity.class);
+                    intent.putExtra(GlobalKeys.loadingDirection, pc + "");
+                    startActivity(intent);
+                }
+            }
+        });
+
+        if (isEnrolled){
+            enrolledSchool.setText(college.getCollegeName());
+            enrolledSchool.setTextColor(Color.parseColor(college.getColorStr()));
+        }else{
+            enrolledView.setVisibility(View.GONE);
+        }
 
         appliedSchools = new ArrayList<>();
         for (int i = 0; i < globals.collegeItems.size(); i++){

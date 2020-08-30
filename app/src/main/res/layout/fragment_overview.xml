@@ -11,7 +11,39 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:id="@+id/wholelayout"
             android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="-10dp"
+                android:id="@+id/enrolledView">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enrolled at: "
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:id="@+id/enrolledTitle"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_below="@id/enrolledTitle"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:id="@+id/enrolledSchool"/>
+
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -22,6 +54,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:textSize="26dp"
+                android:layout_below="@+id/enrolledView"
                 android:id="@+id/appliedSchoolsTitle"/>
 
             <androidx.cardview.widget.CardView
