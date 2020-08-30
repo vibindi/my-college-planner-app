@@ -33,14 +33,6 @@
         android:layout_height="40dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:text="Developed by Vishnu Bindiganavile"
-        android:textStyle="bold"
-        android:textSize="15dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
         android:text="Report all bugs and request new features:"
         android:textSize="15dp"/>
     <TextView
