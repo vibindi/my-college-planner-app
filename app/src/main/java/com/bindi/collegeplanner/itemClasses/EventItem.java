@@ -19,7 +19,7 @@ public class EventItem {
         this.notes = "";
     }
 
-    public EventItem(String title, int year, int month, int day, String notes, CollegeItem college) {
+    public EventItem(String title, int year, int month, int day, CollegeItem college) {
         this.title = title;
         this.year = year;
         this.month = month;

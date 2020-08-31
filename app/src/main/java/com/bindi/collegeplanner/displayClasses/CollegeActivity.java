@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bindi.collegeplanner.MainActivity;
@@ -34,6 +36,7 @@ import com.bindi.collegeplanner.databaseClasses.Globals;
 import com.bindi.collegeplanner.editorClasses.CollegeEditActivity;
 import com.bindi.collegeplanner.itemClasses.CollegeInfoItem;
 import com.bindi.collegeplanner.itemClasses.CollegeItem;
+import com.bindi.collegeplanner.itemClasses.ContactItem;
 import com.bindi.collegeplanner.itemClasses.LinkItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
@@ -47,6 +50,7 @@ public class CollegeActivity extends AppCompatActivity {
     Globals globals = Globals.getInstance();
 
     int position;
+    int positionc;
 
     FloatingActionButton dreamSchoolFab;
     FloatingActionButton feeWaiverFab;
@@ -91,6 +95,7 @@ public class CollegeActivity extends AppCompatActivity {
                 position = Integer.parseInt(data);
             }
         }
+        positionc = position;
 
         toolbar.setTitle(globals.collegeItems.get(position).getCollegeName());
 
@@ -193,7 +198,7 @@ public class CollegeActivity extends AppCompatActivity {
 
         mAdapter.setOnItemClickListener(new CollegeInfoAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(final int position) {
                 if (collegeInfoItems.get(position).getTitle().startsWith("Resource")){
 
                     final int pos = position;
@@ -284,10 +289,116 @@ public class CollegeActivity extends AppCompatActivity {
                             .show();
                 }
                 if (collegeInfoItems.get(position).getTitle().startsWith("Admissions Counselor")){
-
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+                    ContactItem ci = null;
+                    int cip = -1;
+                    for (int i = 0; i < globals.collegeItems.get(positionc).getContactItems().size(); i++){
+                        if (globals.collegeItems.get(positionc).getContactItems().get(i).getContactType().equals("AC")){
+                            if (globals.collegeItems.get(positionc).getContactItems().get(i).getName().equals(collegeInfoItems.get(position).getInfo())){
+                                ci = globals.collegeItems.get(positionc).getContactItems().get(i);
+                                cip = i;
+                            }
+                        }
+                    }
+                    final View view = getLayoutInflater().inflate(R.layout.counselor_dialog, null);
+                    final RelativeLayout nameLayout = view.findViewById(R.id.nameLayout);
+                    final TextView name = view.findViewById(R.id.name);
+                    name.setText(ci.getName());
+                    final RelativeLayout phoneLayout = view.findViewById(R.id.phoneLayout);
+                    final TextView phone = view.findViewById(R.id.phone);
+                    phone.setText(ci.getPhone());
+                    if (ci.getPhone() == null){
+                        phoneLayout.setVisibility(View.GONE);
+                    }
+                    final RelativeLayout emailLayout = view.findViewById(R.id.emailLayout);
+                    final TextView email = view.findViewById(R.id.email);
+                    email.setText(ci.getEmail());
+                    if (ci.getEmail() == null){
+                        emailLayout.setVisibility(View.GONE);
+                    }
+                    final RelativeLayout notesLayout = view.findViewById(R.id.notesLayout);
+                    final TextView notes = view.findViewById(R.id.notes);
+                    notes.setText(ci.getNotes());
+                    if (ci.getNotes() == null){
+                        notesLayout.setVisibility(View.GONE);
+                    }
+                    final int cipi = cip;
+                    alertDialogBuilder
+                            .setTitle("Admissions Counselor")
+                            .setView(view)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    globals.collegeItems.get(positionc).getContactItems().remove(cipi);
+                                    globals.saveAll(c);
+                                    Intent in = new Intent(a, MainActivity.class);
+                                    in.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
+                                    startActivity(in);
+                                }
+                            });
+                    Dialog dialog = alertDialogBuilder.create();
+                    dialog.show();
                 }
                 if (collegeInfoItems.get(position).getTitle().startsWith("Recommender")){
-
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+                    ContactItem ci = null;
+                    int cip = -1;
+                    for (int i = 0; i < globals.collegeItems.get(positionc).getContactItems().size(); i++){
+                        if (globals.collegeItems.get(positionc).getContactItems().get(i).getContactType().equals("REC")){
+                            if (globals.collegeItems.get(positionc).getContactItems().get(i).getName().equals(collegeInfoItems.get(position).getInfo())){
+                                ci = globals.collegeItems.get(positionc).getContactItems().get(i);
+                                cip = i;
+                            }
+                        }
+                    }
+                    final View view = getLayoutInflater().inflate(R.layout.counselor_dialog, null);
+                    final RelativeLayout nameLayout = view.findViewById(R.id.nameLayout);
+                    final TextView name = view.findViewById(R.id.name);
+                    name.setText(ci.getName());
+                    final RelativeLayout phoneLayout = view.findViewById(R.id.phoneLayout);
+                    final TextView phone = view.findViewById(R.id.phone);
+                    phone.setText(ci.getPhone());
+                    if (ci.getPhone() == null){
+                        phoneLayout.setVisibility(View.GONE);
+                    }
+                    final RelativeLayout emailLayout = view.findViewById(R.id.emailLayout);
+                    final TextView email = view.findViewById(R.id.email);
+                    email.setText(ci.getEmail());
+                    if (ci.getEmail() == null){
+                        emailLayout.setVisibility(View.GONE);
+                    }
+                    final RelativeLayout notesLayout = view.findViewById(R.id.notesLayout);
+                    final TextView notes = view.findViewById(R.id.notes);
+                    notes.setText(ci.getNotes());
+                    if (ci.getNotes() == null){
+                        notesLayout.setVisibility(View.GONE);
+                    }
+                    final int cipi = cip;
+                    alertDialogBuilder
+                            .setTitle("Recommender")
+                            .setView(view)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            })
+                            .setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    globals.collegeItems.get(positionc).getContactItems().remove(cipi);
+                                    globals.saveAll(c);
+                                    Intent in = new Intent(a, MainActivity.class);
+                                    in.putExtra(GlobalKeys.loadingDirection, GlobalKeys.collegesDirection);
+                                    startActivity(in);
+                                }
+                            });
+                    Dialog dialog = alertDialogBuilder.create();
+                    dialog.show();
                 }
             }
         });

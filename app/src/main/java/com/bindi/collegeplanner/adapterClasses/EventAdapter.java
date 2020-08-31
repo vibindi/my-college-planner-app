@@ -27,6 +27,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private Context c;
 
+
     public interface OnItemClickListener{
         void onItemClick(int position);
     }

@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.core.view.MenuItemCompat;
@@ -34,6 +35,8 @@ import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.bindi.collegeplanner.adapterClasses.CollegesAdapter;
 import com.bindi.collegeplanner.adapterClasses.EventAdapter;
+import com.bindi.collegeplanner.addContentClasses.AddCounselorActivity;
+import com.bindi.collegeplanner.addContentClasses.AddEventActivity;
 import com.bindi.collegeplanner.databaseClasses.GlobalKeys;
 import com.bindi.collegeplanner.databaseClasses.Globals;
 import com.bindi.collegeplanner.displayClasses.CollegeActivity;
@@ -46,6 +49,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -91,33 +95,7 @@ public class CalendarFragment extends Fragment {
         // START --> ALL EVENTS
         // when doing month do 1 less than wanted
 
-        Calendar calendar = Calendar.getInstance();
-
-        List<EventDay> events = new ArrayList<>();
-
-        for (int i = 0; i < globals.generalEvents.size(); i++){
-            EventItem e = globals.generalEvents.get(i);
-            Calendar c = Calendar.getInstance();
-            c.set(e.getYear() + 0, e.getMonth() - 1, e.getDay() + 0);
-            events.add(new EventDay(c, R.drawable.ic_event));
-        }
-        for (int i = 0; i < globals.collegeItems.size(); i++){
-            for (int j = 0; j < globals.collegeItems.get(i).getEventItems().size(); j++){
-                EventItem e = globals.collegeItems.get(i).getEventItems().get(j);
-                Calendar c = Calendar.getInstance();
-                c.set(e.getYear() + 0, e.getMonth() - 1, e.getDay() + 0);
-                events.add(new EventDay(c, R.drawable.ic_event));
-            }
-        }
-
-        calendarView = (CalendarView) v.findViewById(R.id.calendarView);
-        try {
-            calendarView.setDate(new Date((calendar.getTime().getYear()), (calendar.getTime().getMonth()), calendar.getTime().getDate()));
-        } catch (OutOfDateRangeException e) {
-            e.printStackTrace();
-        }
-        //dateText.setText((calendar.getTime().getYear() + 1900) + " " + (calendar.getTime().getMonth() + 1) + " " + calendar.getTime().getDate());
-        dateText.setText(showMonth(calendar) + " " + calendar.getTime().getDate() + ", " + (calendar.getTime().getYear() + 1900));
+        calendarView = v.findViewById(R.id.calendarView);
 
         mRecyclerView = v.findViewById(R.id.eventsView);
         mRecyclerView.setHasFixedSize(false);
@@ -131,52 +109,26 @@ public class CalendarFragment extends Fragment {
                 dayEvents.add(e);
             }
         }
-
-        mAdapter = new EventAdapter(dayEvents, getContext());
-
-        calendarView.setEvents(events);
-        calendarView.setOnDayClickListener(new OnDayClickListener() {
-            @Override
-            public void onDayClick(EventDay eventDay) {
-                Calendar clickedDayCalendar = eventDay.getCalendar();
-                dateText.setText(showMonth(clickedDayCalendar) + " " + clickedDayCalendar.getTime().getDate() + ", " + (clickedDayCalendar.getTime().getYear() + 1900));
-
-                ArrayList<EventItem> day = new ArrayList<>();
-                for (int i = 0; i < globals.generalEvents.size(); i++){
-                    EventItem e = globals.generalEvents.get(i);
-                    if (((clickedDayCalendar.getTime().getYear() + 1900) == e.getYear()) && (clickedDayCalendar.getTime().getMonth() == (e.getMonth() - 1)) && (clickedDayCalendar.getTime().getDate() == e.getDay())){
-                        day.add(e);
-                    }
+        for (int i = 0; i < globals.collegeItems.size(); i++){
+            for (int x = 0; x < globals.collegeItems.get(i).getEventItems().size(); x++){
+                EventItem e = globals.collegeItems.get(i).getEventItems().get(x);
+                Calendar c = Calendar.getInstance();
+                if (((c.getTime().getYear() + 1900) == e.getYear()) && (c.getTime().getMonth() == (e.getMonth() - 1)) && (c.getTime().getDate() == e.getDay())){
+                    dayEvents.add(e);
                 }
-                Toast.makeText(getContext(), day.size() + "", Toast.LENGTH_SHORT).show();
-
-                mAdapter = new EventAdapter(day, c);
-                mRecyclerView.setAdapter(mAdapter);
             }
-        });
+        }
 
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        adapterStuff(dayEvents);
 
-        mAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+        allEvents();
+
+        addEvent = v.findViewById(R.id.addEvent);
+        addEvent.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(int position) {
-
-            }
-        });
-
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy){
-                if (dy<0 && !addEvent.isShown())
-                    addEvent.show(true);
-                else if(dy>0 && addEvent.isShown())
-                    addEvent.hide(true);
-            }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
+            public void onClick(View view) {
+                Intent intent = new Intent(c, AddEventActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -206,6 +158,7 @@ public class CalendarFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedCollege = chooseList.get(position);
                 if (selectedCollege.equals("All Events")){
+
                     allEvents();
                 }else if (selectedCollege.equals("General Events")){
                     generalEvents();
@@ -253,6 +206,27 @@ public class CalendarFragment extends Fragment {
         } catch (OutOfDateRangeException e) {
             e.printStackTrace();
         }
+
+        ArrayList<EventItem> dayEvents = new ArrayList<>();
+        for (int i = 0; i < globals.generalEvents.size(); i++){
+            EventItem e = globals.generalEvents.get(i);
+            Calendar c = Calendar.getInstance();
+            if (((c.getTime().getYear() + 1900) == e.getYear()) && (c.getTime().getMonth() == (e.getMonth() - 1)) && (c.getTime().getDate() == e.getDay())){
+                dayEvents.add(e);
+            }
+        }
+        for (int i = 0; i < globals.collegeItems.size(); i++){
+            for (int x = 0; x < globals.collegeItems.get(i).getEventItems().size(); x++){
+                EventItem e = globals.collegeItems.get(i).getEventItems().get(x);
+                Calendar c = Calendar.getInstance();
+                if (((c.getTime().getYear() + 1900) == e.getYear()) && (c.getTime().getMonth() == (e.getMonth() - 1)) && (c.getTime().getDate() == e.getDay())){
+                    dayEvents.add(e);
+                }
+            }
+        }
+
+        adapterStuff(dayEvents);
+
         //dateText.setText((calendar.getTime().getYear() + 1900) + " " + (calendar.getTime().getMonth() + 1) + " " + calendar.getTime().getDate());
         dateText.setText(showMonth(calendar) + " " + calendar.getTime().getDate() + ", " + (calendar.getTime().getYear() + 1900));
 
@@ -261,8 +235,24 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onDayClick(EventDay eventDay) {
                 Calendar clickedDayCalendar = eventDay.getCalendar();
-
                 dateText.setText(showMonth(clickedDayCalendar) + " " + clickedDayCalendar.getTime().getDate() + ", " + (clickedDayCalendar.getTime().getYear() + 1900));
+
+                ArrayList<EventItem> dayEvents = new ArrayList<>();
+                for (int i = 0; i < globals.generalEvents.size(); i++){
+                    EventItem e = globals.generalEvents.get(i);
+                    if (((clickedDayCalendar.getTime().getYear() + 1900) == e.getYear()) && (clickedDayCalendar.getTime().getMonth() == (e.getMonth() - 1)) && (clickedDayCalendar.getTime().getDate() == e.getDay())){
+                        dayEvents.add(e);
+                    }
+                }
+                for (int i = 0; i < globals.collegeItems.size(); i++){
+                    for (int x = 0; x < globals.collegeItems.get(i).getEventItems().size(); x++){
+                        EventItem e = globals.collegeItems.get(i).getEventItems().get(x);
+                        if (((clickedDayCalendar.getTime().getYear() + 1900) == e.getYear()) && (clickedDayCalendar.getTime().getMonth() == (e.getMonth() - 1)) && (clickedDayCalendar.getTime().getDate() == e.getDay())){
+                            dayEvents.add(e);
+                        }
+                    }
+                }
+                adapterStuff(dayEvents);
             }
         });
     }
@@ -284,6 +274,18 @@ public class CalendarFragment extends Fragment {
         } catch (OutOfDateRangeException e) {
             e.printStackTrace();
         }
+
+        ArrayList<EventItem> dayEvents = new ArrayList<>();
+        for (int i = 0; i < globals.generalEvents.size(); i++){
+            EventItem e = globals.generalEvents.get(i);
+            Calendar c = Calendar.getInstance();
+            if (((c.getTime().getYear() + 1900) == e.getYear()) && (c.getTime().getMonth() == (e.getMonth() - 1)) && (c.getTime().getDate() == e.getDay())){
+                dayEvents.add(e);
+            }
+        }
+
+        adapterStuff(dayEvents);
+
         //dateText.setText((calendar.getTime().getYear() + 1900) + " " + (calendar.getTime().getMonth() + 1) + " " + calendar.getTime().getDate());
         dateText.setText(showMonth(calendar) + " " + calendar.getTime().getDate() + ", " + (calendar.getTime().getYear() + 1900));
 
@@ -292,19 +294,27 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onDayClick(EventDay eventDay) {
                 Calendar clickedDayCalendar = eventDay.getCalendar();
-
                 dateText.setText(showMonth(clickedDayCalendar) + " " + clickedDayCalendar.getTime().getDate() + ", " + (clickedDayCalendar.getTime().getYear() + 1900));
+
+                ArrayList<EventItem> dayEvents = new ArrayList<>();
+                for (int i = 0; i < globals.generalEvents.size(); i++){
+                    EventItem e = globals.generalEvents.get(i);
+                    if (((clickedDayCalendar.getTime().getYear() + 1900) == e.getYear()) && (clickedDayCalendar.getTime().getMonth() == (e.getMonth() - 1)) && (clickedDayCalendar.getTime().getDate() == e.getDay())){
+                        dayEvents.add(e);
+                    }
+                }
+                adapterStuff(dayEvents);
             }
         });
     }
 
-    public void showCollege(CollegeItem collegeItem){
+    public void showCollege(final CollegeItem collegeItem){
         Calendar calendar = Calendar.getInstance();
 
         List<EventDay> events = new ArrayList<>();
 
-        for (int i = 0; i < collegeItem.getEventItems().size(); i++){
-            EventItem e = collegeItem.getEventItems().get(i);
+        for (int j = 0; j < collegeItem.getEventItems().size(); j++){
+            EventItem e = collegeItem.getEventItems().get(j);
             Calendar c = Calendar.getInstance();
             c.set(e.getYear() + 0, e.getMonth() - 1, e.getDay() + 0);
             events.add(new EventDay(c, R.drawable.ic_event));
@@ -315,6 +325,18 @@ public class CalendarFragment extends Fragment {
         } catch (OutOfDateRangeException e) {
             e.printStackTrace();
         }
+
+        ArrayList<EventItem> dayEvents = new ArrayList<>();
+        for (int x = 0; x < collegeItem.getEventItems().size(); x++){
+            EventItem e = collegeItem.getEventItems().get(x);
+            Calendar c = Calendar.getInstance();
+            if (((c.getTime().getYear() + 1900) == e.getYear()) && (c.getTime().getMonth() == (e.getMonth() - 1)) && (c.getTime().getDate() == e.getDay())){
+                dayEvents.add(e);
+            }
+        }
+
+        adapterStuff(dayEvents);
+
         //dateText.setText((calendar.getTime().getYear() + 1900) + " " + (calendar.getTime().getMonth() + 1) + " " + calendar.getTime().getDate());
         dateText.setText(showMonth(calendar) + " " + calendar.getTime().getDate() + ", " + (calendar.getTime().getYear() + 1900));
 
@@ -323,8 +345,16 @@ public class CalendarFragment extends Fragment {
             @Override
             public void onDayClick(EventDay eventDay) {
                 Calendar clickedDayCalendar = eventDay.getCalendar();
-
                 dateText.setText(showMonth(clickedDayCalendar) + " " + clickedDayCalendar.getTime().getDate() + ", " + (clickedDayCalendar.getTime().getYear() + 1900));
+
+                ArrayList<EventItem> dayEvents = new ArrayList<>();
+                for (int x = 0; x < collegeItem.getEventItems().size(); x++){
+                    EventItem e = collegeItem.getEventItems().get(x);
+                    if (((clickedDayCalendar.getTime().getYear() + 1900) == e.getYear()) && (clickedDayCalendar.getTime().getMonth() == (e.getMonth() - 1)) && (clickedDayCalendar.getTime().getDate() == e.getDay())){
+                        dayEvents.add(e);
+                    }
+                }
+                adapterStuff(dayEvents);
             }
         });
     }
@@ -362,6 +392,35 @@ public class CalendarFragment extends Fragment {
                 str = "";break;
         }
         return str;
+    }
+
+    public void adapterStuff(ArrayList<EventItem> dayEvents){
+        mAdapter = new EventAdapter(dayEvents, getContext());
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+        });
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener(){
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy){
+                if (dy<0 && !addEvent.isShown())
+                    addEvent.show(true);
+                else if(dy>0 && addEvent.isShown())
+                    addEvent.hide(true);
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
     }
 
     @Override
