@@ -215,7 +215,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Onboarding Icons by Flaticon and Freepick"
+                        android:text="Icons by Flaticon and Freepick"
                         android:textStyle="bold"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="20dp"

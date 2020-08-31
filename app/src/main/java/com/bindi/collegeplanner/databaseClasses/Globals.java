@@ -95,7 +95,6 @@ public class Globals {
         generalEvents.add(new EventItem("FAFSA Application opens for fall 2021 cycle", 2020, 10, 1));
         generalEvents.add(new EventItem("CSS Application opens for fall 2021 cycle", 2020, 10, 1));
         generalEvents.add(new EventItem("National Decision Day", 2021, 5, 1));
-        generalEvents.add(new EventItem("Temporary", 2020, 8, 29));
         saveGeneralEvents(generalEvents, GlobalKeys.generalEventsKey, c);
         scholarshipItems = loadScholarships(GlobalKeys.scholarshipsKey, c);
         noteItems = loadNotes(GlobalKeys.notesKey, c);

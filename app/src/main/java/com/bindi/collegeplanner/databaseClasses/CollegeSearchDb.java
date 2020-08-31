@@ -327,9 +327,9 @@ public class CollegeSearchDb {
         collegesList.add("University of Maryland - Baltimore County | UMD Baltimore County");
         collegesList.add("University of Maryland - College Park | UMD College Park");
         collegesList.add("Marymount Manhattan College");
-        collegesList.add("University of Massachusetts - Amherst");
-        collegesList.add("University of Massachusetts - Boston");
-        collegesList.add("Massachusetts Institute of Technology");
+        collegesList.add("University of Massachusetts - Amherst | UMass Amherst");
+        collegesList.add("University of Massachusetts - Boston | UMass Boston");
+        collegesList.add("Massachusetts Institute of Technology | MIT");
         collegesList.add("McGill University");
         collegesList.add("Mercer University");
         collegesList.add("Merrimack College");
