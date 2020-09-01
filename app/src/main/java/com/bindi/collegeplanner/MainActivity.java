@@ -121,6 +121,15 @@ public class MainActivity extends AppCompatActivity {
                     ft.commit();
                     setTitle("Portals");
                     nvDrawer.getMenu().getItem(5).setChecked(true);
+                } else if (data.equals(GlobalKeys.calendarDirection)){
+                    other = false;
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.flContent, new CalendarFragment());
+                    ft.addToBackStack(null);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    ft.commit();
+                    setTitle("");
+                    nvDrawer.getMenu().getItem(1).setChecked(true);
                 }
             }
         }

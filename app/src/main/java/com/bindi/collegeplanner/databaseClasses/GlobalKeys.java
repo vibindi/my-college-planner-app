@@ -18,5 +18,6 @@ public class GlobalKeys {
     public static String collegesDirection = "goColleges";
     public static String resourcesDirection = "goResources";
     public static String portalsDirection = "goPortals";
+    public static String calendarDirection = "goCalendar";
 
 }
