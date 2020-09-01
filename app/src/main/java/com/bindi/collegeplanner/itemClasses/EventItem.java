@@ -9,7 +9,8 @@ public class EventItem {
     private int month;
     private int day;
     private String notes;
-    private CollegeItem college;
+    private String collegeName;
+    private String colorStr;
 
     public EventItem(String title, int year, int month, int day) {
         this.title = title;
@@ -19,13 +20,14 @@ public class EventItem {
         this.notes = "";
     }
 
-    public EventItem(String title, int year, int month, int day, CollegeItem college) {
+    public EventItem(String title, int year, int month, int day, String collegeName, String colorStr) {
         this.title = title;
         this.year = year;
         this.month = month;
         this.day = day;
         this.notes = notes;
-        this.college = college;
+        this.collegeName = collegeName;
+        this.colorStr = colorStr;
     }
 
     public String getTitle() {
@@ -68,11 +70,19 @@ public class EventItem {
         this.notes = notes;
     }
 
-    public CollegeItem getCollege() {
-        return college;
+    public String getCollegeName() {
+        return collegeName;
     }
 
-    public void setCollege(CollegeItem college) {
-        this.college = college;
+    public void setCollegeName(String collegeName) {
+        this.collegeName = collegeName;
+    }
+
+    public String getColorStr() {
+        return colorStr;
+    }
+
+    public void setColorStr(String colorStr) {
+        this.colorStr = colorStr;
     }
 }

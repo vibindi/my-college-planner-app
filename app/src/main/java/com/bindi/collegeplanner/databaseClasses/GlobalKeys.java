@@ -10,6 +10,8 @@ public class GlobalKeys {
     public static String notesKey = "noteItems";
     public static String scholarshipsKey = "scholarshipItems";
     public static String resourcesKey = "resourcesItems";
+    public static String eventsKey = "eventItems";
+
 
     // ---------------- OTHERS ---------------- \\
     public static String loadingDirection = "loadDirection";

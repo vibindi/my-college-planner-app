@@ -1,6 +1,8 @@
 package com.bindi.collegeplanner;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -8,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -394,7 +397,7 @@ public class CalendarFragment extends Fragment {
         return str;
     }
 
-    public void adapterStuff(ArrayList<EventItem> dayEvents){
+    public void adapterStuff(final ArrayList<EventItem> dayEvents){
         mAdapter = new EventAdapter(dayEvents, getContext());
 
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -402,8 +405,53 @@ public class CalendarFragment extends Fragment {
 
         mAdapter.setOnItemClickListener(new EventAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
+            public void onItemClick(final int position) {
 
+                if (dayEvents.get(position).getCollegeName() == null){
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+                    alertDialogBuilder
+                            .setTitle(dayEvents.get(position).getTitle())
+                            .setMessage(dateText.getText().toString())
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                    Dialog dialog = alertDialogBuilder.create();
+                    dialog.show();
+                }else{
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
+                    alertDialogBuilder
+                            .setTitle(dayEvents.get(position).getTitle())
+                            .setMessage(dayEvents.get(position).getCollegeName() + "\n" + dateText.getText().toString())
+                            .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    Toast.makeText(c, dayEvents.get(position).getCollegeName() + "", Toast.LENGTH_SHORT).show();
+
+                                    for (int x = 0; x < globals.collegeItems.size(); x++){
+                                        for (int y = 0; y < globals.collegeItems.get(x).getEventItems().size(); y++){
+                                            if (globals.collegeItems.get(x).getEventItems().get(y).getCollegeName().equals(dayEvents.get(position).getCollegeName())
+                                            && globals.collegeItems.get(x).getEventItems().get(y).getTitle().equals(dayEvents.get(position).getTitle())
+                                            && globals.collegeItems.get(x).getEventItems().get(y).getDay() == (dayEvents.get(position).getDay())
+                                            && globals.collegeItems.get(x).getEventItems().get(y).getMonth() ==(dayEvents.get(position).getMonth())
+                                            && globals.collegeItems.get(x).getEventItems().get(y).getYear() == (dayEvents.get(position).getYear())
+                                            && globals.collegeItems.get(x).getEventItems().get(y).getColorStr().equals(dayEvents.get(position).getColorStr())){
+                                                globals.collegeItems.get(x).getEventItems().remove(y);
+                                                globals.saveColleges(globals.collegeItems, GlobalKeys.collegeKey, c);
+                                                globals.loadColleges(GlobalKeys.collegeKey, c);
+                                            }
+                                        }
+                                    }
+                                    Intent intent = new Intent(c, MainActivity.class);
+                                    intent.putExtra(GlobalKeys.loadingDirection, GlobalKeys.calendarDirection);
+                                    startActivity(intent);
+                                }
+                            });
+                    Dialog dialog = alertDialogBuilder.create();
+                    dialog.show();
+                }
             }
         });
 

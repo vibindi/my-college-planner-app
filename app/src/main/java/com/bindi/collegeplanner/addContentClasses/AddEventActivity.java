@@ -127,8 +127,10 @@ public class AddEventActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!eventName.getText().toString().isEmpty() && !collegeName.getText().toString().isEmpty() && !eventDate.getText().toString().isEmpty()){
-                    globals.collegeItems.get(position).addEventItem(new EventItem(eventName.getText().toString(), Integer.parseInt(yearT.getText().toString()), Integer.parseInt(monthT.getText().toString()), Integer.parseInt(dayT.getText().toString()), globals.collegeItems.get(position)));
-                    globals.saveAll(c);
+                    //Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_SHORT).show();
+                    globals.collegeItems.get(position).getEventItems().add(new EventItem(eventName.getText().toString(), Integer.parseInt(yearT.getText().toString()), Integer.parseInt(monthT.getText().toString()), Integer.parseInt(dayT.getText().toString()), globals.collegeItems.get(position).getCollegeName(), globals.collegeItems.get(position).getColorStr()));
+                    globals.saveColleges(globals.collegeItems, GlobalKeys.collegeKey, c);
+                    globals.loadColleges(GlobalKeys.collegeKey, c);
                     Intent intent = new Intent(c, MainActivity.class);
                     intent.putExtra(GlobalKeys.loadingDirection, GlobalKeys.calendarDirection);
                     startActivity(intent);

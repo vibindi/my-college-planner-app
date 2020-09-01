@@ -95,7 +95,6 @@ public class Globals {
         generalEvents.add(new EventItem("FAFSA Application opens for fall 2021 cycle", 2020, 10, 1));
         generalEvents.add(new EventItem("CSS Application opens for fall 2021 cycle", 2020, 10, 1));
         generalEvents.add(new EventItem("National Decision Day", 2021, 5, 1));
-        generalEvents.add(new EventItem("Temporary", 2020, 8, 31));
         saveGeneralEvents(generalEvents, GlobalKeys.generalEventsKey, c);
         scholarshipItems = loadScholarships(GlobalKeys.scholarshipsKey, c);
         noteItems = loadNotes(GlobalKeys.notesKey, c);
@@ -176,6 +175,13 @@ public class Globals {
     }
 
     public void saveColleges(ArrayList<CollegeItem> list, String fileName, Context c){
+        /*for (int i = 0; i < list.size(); i++){
+            ArrayList<EventItem> ei = new ArrayList<EventItem>();
+            for (int x = 0; x < list.get(i).getEventItems().size(); x++){
+                ei.add(list.get(i).getEventItems().get(x));
+            }
+            saveEvents(ei, GlobalKeys.eventsKey + i, c);
+        }*/
         SharedPreferences sharedPreferences = c.getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
@@ -183,6 +189,7 @@ public class Globals {
         editor.putString(fileName, json);
         editor.apply();
     }
+
     public ArrayList<CollegeItem> loadColleges(String fileName, Context c){
         SharedPreferences sharedPreferences = c.getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
         Gson gson = new Gson();
@@ -193,6 +200,11 @@ public class Globals {
         if (strList == null){
             return new ArrayList<CollegeItem>();
         }
+
+        /*for (int i = 0; i < strList.size(); i++){
+            strList.get(i).setEventItems(loadEvents(GlobalKeys.eventsKey + 1, c));
+        }*/
+
         return strList;
     }
 
@@ -255,6 +267,27 @@ public class Globals {
 
         if (strList == null){
             return new ArrayList<FinancialAidItem>();
+        }
+        return strList;
+    }
+
+    public void saveEvents(ArrayList<EventItem> list, String fileName, Context c){
+        SharedPreferences sharedPreferences = c.getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString(fileName, json);
+        editor.apply();
+    }
+    public ArrayList<EventItem> loadEvents(String fileName, Context c){
+        SharedPreferences sharedPreferences = c.getSharedPreferences("SharedPrefs", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString(fileName, null);
+        Type type = new TypeToken<ArrayList<EventItem>>() {}.getType();
+        ArrayList<EventItem> strList = gson.fromJson(json, type);
+
+        if (strList == null){
+            return new ArrayList<EventItem>();
         }
         return strList;
     }

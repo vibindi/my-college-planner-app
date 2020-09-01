@@ -81,16 +81,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         String colorStr = "#";
         String infoStr = "";
 
-        if (currentItem.getCollege() == null){
+        if (currentItem.getCollegeName() == null){
             holder.mResourceInfo.setText("General Item");
         }else{
-            holder.mResourceInfo.setText(currentItem.getCollege().getCollegeName());
+            holder.mResourceInfo.setText(currentItem.getCollegeName());
         }
         holder.mResourceName.setText(currentItem.getTitle());
-        if (currentItem.getCollege() == null){
+        if (currentItem.getCollegeName() == null){
             holder.mResourceCard.setBackgroundColor(Color.parseColor("#3F51B5"));
         }else{
-            holder.mResourceCard.setBackgroundColor(Color.parseColor(currentItem.getCollege().getColorStr()));
+            holder.mResourceCard.setBackgroundColor(Color.parseColor(currentItem.getColorStr()));
         }
         //holder.mTaskTime.setText(currentItem.getTimeItem().getTimeString());
         //holder.mClassColor.setBackgroundColor(Color.parseColor(currentItem.getColor()));
