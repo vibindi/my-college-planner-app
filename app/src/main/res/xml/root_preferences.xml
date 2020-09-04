@@ -7,10 +7,10 @@
             app:key="key_profile"/>
     </PreferenceCategory>
     <PreferenceCategory app:title="About">
-        <Preference
+        <!--<Preference
             app:title="Leave a Review"
             app:summary="Submit a review on the Google Play Store"
-            app:key="key_review"/>
+            app:key="key_review"/>-->
         <Preference
             app:title="Contact Us"
             app:summary="Let us know about any bugs or features you would like to fix or see"
@@ -18,10 +18,6 @@
         <Preference
             app:title="Privacy Policy"
             app:key="key_privacy_policy"/>
-        <Preference
-            app:title="Donate"
-            app:summary="Donate any of the following amounts to help us provide you with updates"
-            app:key="key_donate"/>
         <Preference
             app:title="Open Source Libraries"
             app:key="key_os_libraries"/>

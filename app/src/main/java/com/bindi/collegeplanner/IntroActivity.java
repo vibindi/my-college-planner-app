@@ -52,9 +52,9 @@ public class IntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Information At A Glance", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", R.drawable.check_list));
-        mList.add(new ScreenItem("Detailed Calendar", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", R.drawable.calendar));
-        mList.add(new ScreenItem("Relevant Statistics", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", R.drawable.graphics));
+        mList.add(new ScreenItem("Information At A Glance", "Organize and view all of your college information at a glance with the overview and college screen.", R.drawable.check_list));
+        mList.add(new ScreenItem("Detailed Calendar", "View and manage your events. Filter out what's important based on the college.", R.drawable.calendar));
+        mList.add(new ScreenItem("Relevant Statistics", "View relevant statistics based on your input information.", R.drawable.graphics));
         mList.add(new ScreenItem("Good Luck!", "Are you ready to enter the college application process? Don't stress. You got this!", R.drawable.high_five));
 
         nextButton = findViewById(R.id.next_button);

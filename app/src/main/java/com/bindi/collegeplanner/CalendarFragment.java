@@ -428,8 +428,6 @@ public class CalendarFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
 
-                                    Toast.makeText(c, dayEvents.get(position).getCollegeName() + "", Toast.LENGTH_SHORT).show();
-
                                     for (int x = 0; x < globals.collegeItems.size(); x++){
                                         for (int y = 0; y < globals.collegeItems.get(x).getEventItems().size(); y++){
                                             if (globals.collegeItems.get(x).getEventItems().get(y).getCollegeName().equals(dayEvents.get(position).getCollegeName())

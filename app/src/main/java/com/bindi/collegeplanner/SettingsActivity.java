@@ -90,6 +90,17 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             });
 
+            Preference privacyPolicyPreference = findPreference("key_privacy_policy");
+            privacyPolicyPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse("https://github.com/vb270/my-college-planner"));
+                    startActivity(i);
+                    return false;
+                }
+            });
+
             Preference feedbackPreference = findPreference("key_send_feedback");
             feedbackPreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
